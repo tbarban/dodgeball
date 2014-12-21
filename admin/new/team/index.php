@@ -53,8 +53,8 @@ require '../../../functions.class.php';
             <li><a href="../../teams/">Teams</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="../new/game/">Add Game</a></li>
-            <li><a href="../new/score/">Add Score</a></li>
+            <li><a href="../game/">Add Game</a></li>
+            <li><a href="../score/">Add Score</a></li>
             <li class="active"><a href="">Add Team <span class="sr-only">(current)</span></a></li>
 
         </div>
