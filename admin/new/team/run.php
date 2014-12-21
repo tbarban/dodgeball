@@ -10,7 +10,7 @@ $password = "root";
 $dbname = "dodgeball";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    echo "Connection failed: " . $conn->connect_error;
+   exit("Connection failed: " . $conn->connect_error);
   }
 
 
@@ -27,5 +27,5 @@ $mem8 = $_POST['MEM8'];
 mysqli_query($conn, $sql = "INSERT INTO `teams` (NAME, MEM1, MEM2, MEM3, MEM4, MEM5, MEM6, MEM7, MEM8) VALUES ('$name', '$mem1', '$mem2', '$mem3', '$mem4', '$mem5', '$mem6', '$mem7', '$mem8')");
 
 
-echo 'hi';
+header('Location: ../../');
 ?>
