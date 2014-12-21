@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(E_ALL);
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -19,17 +23,8 @@ $mem6 = $_POST['MEM6'];
 $mem7 = $_POST['MEM7'];
 $mem8 = $_POST['MEM8'];
 
-if(!is_null($mem7)) {
-  $sql = "INSERT INTO `teams` (NAME, MEM1, MEM2, MEM3, MEM4, MEM5, MEM6, MEM7, MEM8) VALUES ('$name', '$mem1', '$mem2', '$mem3', '$mem4', '$mem5', '$mem6', '$mem7', '$mem8')";
-}
-else {
-  $sql = "INSERT INTO `teams` (NAME, MEM1, MEM2, MEM3, MEM4, MEM5, MEM6) VALUES ('$name', '$mem1', '$mem2', '$mem3', '$mem4', '$mem5', '$mem6')";
-}
-
-if(!mysqli_query($conn, $sql)) {
-  die('Error: ' . mysql_error());
-}
+mysqli_query($conn, $sql = "INSERT INTO `teams` (NAME, MEM1, MEM2, MEM3, MEM4, MEM5, MEM6, MEM7, MEM8) VALUES ('$name', '$mem1', '$mem2', '$mem3', '$mem4', '$mem5', '$mem6', '$mem7', '$mem8')");
 
 $conn->close;
-header("Location: http://dodgeball.ah.gd/admin/");
+echo 'hi';
 ?>
