@@ -64,16 +64,48 @@ global $conn;
           <h1 class="page-header">Add New Game Score</h1>
             
           <div class="row">
-            <div class="col-md-6">
-              <?php
-                $result = mysqli_query($conn, "SELECT `NAME` FROM `teams`");
-              ?>
-            </div>
-            <div class="col-md-6">
-              <?php
-
-              ?>
-            </div>
+            <form action="run.php" method="POST">
+              <div class="col-md-4">
+                <label for="game">Game #:</label>
+                <?php
+                  $result = mysqli_query($conn, "SELECT `GNUM` FROM `schedule`");
+                  echo "<select name='game'>";
+                  echo "<option value='0'>-Select-</option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo "<option value='".$row['GNUM']."'>".$row['GNUM']."</option>";
+                  }
+                  echo "</select>";
+                ?>
+                <br>
+                
+              </div>
+              <div class="col-md-4">
+                <label for="win">Winner:</label>
+                <?php
+                  $result = mysqli_query($conn, "SELECT `NAME` FROM `teams`");
+                  echo "<select name='win'>";
+                  echo "<option value='0'>-Select-</option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo "<option value='".$row['TID']."'>".$row['NAME']."</option>";
+                  }
+                  echo "</select>";
+                ?>
+              </div>
+              <div class="col-md-4">
+                <label for="lose">Loser:</label>
+                <?php
+                  $result = mysqli_query($conn, "SELECT `NAME` FROM `teams`");
+                  echo "<select name='lose'>";
+                  echo "<option value='0'>-Select-</option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo "<option value='".$row['TID']."'>".$row['NAME']."</option>";
+                  }
+                  echo "</select>";
+                ?>
+              </div>
+              <input type="submit" value="Submit">
+            </form>
+            
           </div>
              
         </div>
