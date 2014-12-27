@@ -14,11 +14,14 @@ if ($conn->connect_error) {
   }
 
 
-$id = $_POST['game'];
 $win = $_POST['win'];
 $loss = $_POST['lose'];
 
-echo 'ID: ' . $id;
-echo 'WIN: ' .$win;
-echo 'LOSE: ' . $loss;
+$result = mysqli_query($conn, "SELECT * FROM teams WHERE TID=$win");
+$row = mysqli_fetch_array($result);
+
+mysqli_query($conn, $sql = "UPDATE teams SET GP=GP+1, W=W+1, PTS=W*2 WHERE TID=$win");
+mysqli_query($conn, $sql = "UPDATE teams SET GP=GP+1, L=L+1, PTS=W*2 WHERE TID=$loss");
+
+header('Location: ../../');
 ?>

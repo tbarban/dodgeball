@@ -22,8 +22,39 @@ function getStandings() {
 			echo "<tr><td><a href=\"../teams/view.php?id=".$row['TID']."\">".$row['NAME']."</a></td><td>".$row['GP']."</td><td>".$row['W']."</td><td>".$row['L']."</td><td>".$row['PTS']."</td><td>".$row['W']." - ".$row['L']."</td></tr>";
 		}
 	}
+	else {
+		echo "HEY YOU DERPED, THERE ARE NO TEAMS IN THE LEAGUE.";
+	}
 	$conn->close();
 }
 
+function getTeamRecord($teamID) {
+	global $conn;
+	$result = mysqli_query($conn, $sql="SELECT * FROM teams WHERE TID=$teamID");
+	$row = mysqli_fetch_array($result);
+	echo '<thead><tr><th>GP</th><th>Wins</th><th>Losses</th><th>Points</th><th>Record</th></tr></thead><tbody><tr><td>'.$row['GP'].'</td><td>'.$row['W'].'</td><td>'.$row['L'].'</td><td>'.$row['PTS'].'</td><td>'.$row['W'].' - '.$row['L'].'</td></tr></tbody>';
+
+}
+
+function getTeamName($teamID) {
+	global $conn;
+	$result = mysqli_query($conn, $sql="SELECT * FROM teams WHERE TID=$teamID");
+	$row = mysqli_fetch_array($result);
+	echo $row['NAME'];
+}
+
+function getPlayers($teamID) {
+	global $conn;
+	$result = mysqli_query($conn, $sql="SELECT * FROM teams WHERE TID=$teamID");
+	$row = mysqli_fetch_array($result);
+	echo '<p>'. $row['MEM1'] . '</p>';
+	echo '<p>'. $row['MEM2'] . '</p>';
+	echo '<p>'. $row['MEM3'] . '</p>';
+	echo '<p>'. $row['MEM4'] . '</p>';
+	echo '<p>'. $row['MEM5'] . '</p>';
+	echo '<p>'. $row['MEM6'] . '</p>';
+	echo '<p>'. $row['MEM7'] . '</p>';
+	echo '<p>'. $row['MEM8'] . '</p>';
+}
 
 ?>	

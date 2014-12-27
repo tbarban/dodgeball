@@ -62,8 +62,40 @@ global $conn;
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Add New Game Score</h1>
-            
           <div class="row">
+            <form action="run.php" method="POST"> 
+                <div class="col-md-4">
+                <label for="win">Winner:</label>
+                <?php
+                  $result = mysqli_query($conn, "SELECT * FROM `teams`");
+                  echo "<select name='win'>";
+                  echo "<option value='0'>-Select-</option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo "<option value='".$row['TID']."'>".$row['NAME']."</option>";
+                  }
+                  echo "</select>";
+                ?>
+              </div>
+              <div class="col-md-4">
+                <label for="lose">Loser:</label>
+                <?php
+                  $result = mysqli_query($conn, "SELECT * FROM `teams`");
+                  echo "<select name='lose'>";
+                  echo "<option value='0'>-Select-</option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo "<option value='".$row['TID']."'>".$row['NAME']."</option>";
+                  }
+                  echo "</select>";
+                ?>
+              </div>
+             <input class="btn btn-default" type="submit" value="Submit">
+              </form>
+            </div>
+
+
+
+
+         <!-- <div class="row">
             <form action="run.php" method="POST">
               <div class="col-md-4">
                 <label for="game">Game #:</label>
@@ -82,7 +114,7 @@ global $conn;
               <div class="col-md-4">
                 <label for="win">Winner:</label>
                 <?php
-                  $result = mysqli_query($conn, "SELECT `NAME` FROM `teams`");
+                  $result = mysqli_query($conn, "SELECT * FROM `teams`");
                   echo "<select name='win'>";
                   echo "<option value='0'>-Select-</option>";
                   while($row = mysqli_fetch_array($result)) {
@@ -94,7 +126,7 @@ global $conn;
               <div class="col-md-4">
                 <label for="lose">Loser:</label>
                 <?php
-                  $result = mysqli_query($conn, "SELECT `NAME` FROM `teams`");
+                  $result = mysqli_query($conn, "SELECT * FROM `teams`");
                   echo "<select name='lose'>";
                   echo "<option value='0'>-Select-</option>";
                   while($row = mysqli_fetch_array($result)) {
@@ -104,10 +136,8 @@ global $conn;
                 ?>
               </div>
               <input type="submit" value="Submit">
-            </form>
-            
-          </div>
-             
+            </form>    
+          </div>-->     
         </div>
       </div>
     </div>
