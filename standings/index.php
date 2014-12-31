@@ -15,10 +15,9 @@ include '../functions.class.php';
 
     <title>AAA Dodgeball</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/bootstrap-theme.css" rel="stylesheet">
   </head>
   <body style="margin-top: 80px;">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -60,7 +59,7 @@ include '../functions.class.php';
           </table>
         </div>
       <div class="col-md-4">
-        <div class="well ">
+        <div class="well">
           <h3>Legend</h3>
           <hr>
           <div class="row">

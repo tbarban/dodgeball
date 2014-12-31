@@ -19,13 +19,40 @@ function getStandings() {
 	$result = $conn->query($sql);
 	if($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			echo "<tr><td><a href=\"../teams/view.php?id=".$row['TID']."\">".$row['NAME']."</a></td><td>".$row['GP']."</td><td>".$row['W']."</td><td>".$row['L']."</td><td>".$row['PTS']."</td><td>".$row['W']." - ".$row['L']."</td></tr>";
+			echo "<tr style=\"text-align: center;\"><td><a href=\"../teams/view.php?id=".$row['TID']."\">".$row['NAME']."</a></td><td>".$row['GP']."</td><td>".$row['W']."</td><td>".$row['L']."</td><td>".$row['PTS']."</td><td>".$row['W']." - ".$row['L']."</td></tr>";
 		}
 	}
 	else {
 		echo "HEY YOU DERPED, THERE ARE NO TEAMS IN THE LEAGUE.";
 	}
-	$conn->close();
+}
+
+function getPools() {
+	global $conn;
+	$sql = "SELECT * FROM pools";
+	$result = $conn->query($sql);
+	if($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			echo "<div class=\"col-md-3\"><div class=\"well well-sm\"><center><h4><span class=\"label label-".$row['COLOUR']."\">".$row['NAME']."</span></h4><hr><p>".$row['TEAM1']."</p><p>".$row['TEAM2']."</p><p>".$row['TEAM3']."</p></center></div></div>";
+		}
+	}
+	else {
+		echo "HEY YOU DERPED, THERE ARE NO POOLS IN THE LEAGUE.";
+	}
+}
+
+function getGames() {
+	global $conn;
+	$sql = "SELECT * FROM schedule";
+	$result = $conn->query($sql);
+	if($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			echo "<tr class=\"".$row['POOLID']."\"style=\"text-align: center;\"><td>".$row['ID']."</td><td>".$row['DATE']."</td><td>".$row['TIME']."</td><td>".$row['HOME']."</td><td>".$row['AWAY']."</td></tr>";
+		}
+	}
+	else {
+		echo "HEY YOU DERPED, THERE ARE NO GAMES SCHEDULED.";
+	}
 }
 
 function getTeamRecord($teamID) {
@@ -56,5 +83,7 @@ function getPlayers($teamID) {
 	echo '<p>'. $row['MEM7'] . '</p>';
 	echo '<p>'. $row['MEM8'] . '</p>';
 }
+
+
 
 ?>	
