@@ -31,7 +31,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `username`, `password`) VALUES
-(1, 'tyler.barban@ashbury.ca', 'barnwell');
+(1, 'hello@tylerbarban.com', 'dodgeball');
 
 -- --------------------------------------------------------
 
